@@ -57,21 +57,10 @@ Instead of offering heavy banking operations, the app focuses on **clarity, guid
 
 ---
 
-## 🛠️ Technologies Used
-- React
-- Vite
-- TypeScript
-- Tailwind CSS
-- Git & GitHub
-- Vercel (Deployment)
-
----
-
 ## 📦 Project Status
-- Frontend application fully designed and deployed
-- Product currently at **MVP stage**
-- Backend services and bank API integrations planned for future phases
 
+- Product currently at **MVP stage**
+- 
 ---
 
 ## 🔒 Privacy & Security Approach
