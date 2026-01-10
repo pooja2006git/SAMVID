@@ -7,7 +7,7 @@ The platform focuses on reducing complexity in everyday banking tasks while main
 ---
 
 ## 🚀 Live Demo
-https://samvid-frontend.vercel.app
+https://samvid.vercel.app/
 
 ---
 
