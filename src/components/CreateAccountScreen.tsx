@@ -1,63 +1,14 @@
-import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Shield, Lock } from 'lucide-react';
-import { supabase } from '../lib/supabase';
 import EyeLogo from './EyeLogo';
 
-interface CreateAccountScreenProps {
-  onAccountCreated: () => void;
-}
+export default function CreateAccountScreen() {
+  const navigate = useNavigate();
 
-export default function CreateAccountScreen({ onAccountCreated }: CreateAccountScreenProps) {
-  const [fullName, setFullName] = useState('');
-  const [bankName, setBankName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-
-  const handleCreateAccount = async (e: React.FormEvent) => {
+  const handleCreateAccount = (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
-
-    if (password !== confirmPassword) {
-      setError('Passwords do not match');
-      return;
-    }
-
-    if (password.length < 6) {
-      setError('Password must be at least 6 characters');
-      return;
-    }
-
-    setLoading(true);
-
-    try {
-      const { data: authData, error: signUpError } = await supabase.auth.signUp({
-        email,
-        password,
-      });
-
-      if (signUpError) throw signUpError;
-
-      if (authData.user) {
-        const { error: profileError } = await supabase
-          .from('profiles')
-          .insert({
-            id: authData.user.id,
-            full_name: fullName,
-            bank_name: bankName,
-          });
-
-        if (profileError) throw profileError;
-
-        onAccountCreated();
-      }
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Account creation failed');
-    } finally {
-      setLoading(false);
-    }
+    // Demo mode: directly navigate to dashboard without authentication
+    navigate('/dashboard');
   };
 
   return (
@@ -88,9 +39,6 @@ export default function CreateAccountScreen({ onAccountCreated }: CreateAccountS
                 <input
                   id="fullName"
                   type="text"
-                  value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
-                  required
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#5A8FC7] focus:border-transparent transition-all bg-gray-50"
                   placeholder="Enter your full name"
                 />
@@ -103,9 +51,6 @@ export default function CreateAccountScreen({ onAccountCreated }: CreateAccountS
                 <input
                   id="bankName"
                   type="text"
-                  value={bankName}
-                  onChange={(e) => setBankName(e.target.value)}
-                  required
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#5A8FC7] focus:border-transparent transition-all bg-gray-50"
                   placeholder="Enter your bank name"
                 />
@@ -121,9 +66,6 @@ export default function CreateAccountScreen({ onAccountCreated }: CreateAccountS
                 <input
                   id="email"
                   type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#5A8FC7] focus:border-transparent transition-all bg-gray-50"
                   placeholder="Enter your email"
                 />
@@ -136,9 +78,6 @@ export default function CreateAccountScreen({ onAccountCreated }: CreateAccountS
                 <input
                   id="password"
                   type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#5A8FC7] focus:border-transparent transition-all bg-gray-50"
                   placeholder="Create a password"
                 />
@@ -151,24 +90,16 @@ export default function CreateAccountScreen({ onAccountCreated }: CreateAccountS
                 <input
                   id="confirmPassword"
                   type="password"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  required
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#5A8FC7] focus:border-transparent transition-all bg-gray-50"
                   placeholder="Confirm your password"
                 />
               </div>
 
-              {error && (
-                <div className="text-red-600 text-sm text-center font-medium">{error}</div>
-              )}
-
               <button
                 type="submit"
-                disabled={loading}
-                className="w-full bg-[#5A8FC7] hover:bg-[#4A7BA7] text-white font-semibold py-3 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-md hover:shadow-lg mt-6"
+                className="w-full bg-[#5A8FC7] hover:bg-[#4A7BA7] text-white font-semibold py-3 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg mt-6"
               >
-                {loading ? 'Creating Account...' : 'Create Account'}
+                Continue
               </button>
             </form>
           </div>

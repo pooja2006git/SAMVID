@@ -1,18 +1,17 @@
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import EyeLogo from './EyeLogo';
 
-interface SplashScreenProps {
-  onComplete: () => void;
-}
+export default function SplashScreen() {
+  const navigate = useNavigate();
 
-export default function SplashScreen({ onComplete }: SplashScreenProps) {
   useEffect(() => {
     const timer = setTimeout(() => {
-      onComplete();
+      navigate('/login');
     }, 3000);
 
     return () => clearTimeout(timer);
-  }, [onComplete]);
+  }, [navigate]);
 
   return (
     <div className="min-h-screen bg-[#4A7BA7] flex flex-col items-center justify-center">

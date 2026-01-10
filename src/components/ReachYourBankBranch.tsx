@@ -1,11 +1,6 @@
 import { useState } from 'react';
 import { MapPin, Clock, Phone, Navigation, Building } from 'lucide-react';
-import { demoAuth } from '../lib/demoAuth';
 import ProfileDropdown from './ProfileDropdown';
-
-interface ReachYourBankBranchProps {
-  onLogout: () => void;
-}
 
 interface BranchInfo {
   id: string;
@@ -59,8 +54,9 @@ const chennaiBranches: BranchInfo[] = [
   },
 ];
 
-export default function ReachYourBankBranch({ onLogout }: ReachYourBankBranchProps) {
-  const user = demoAuth.getCurrentUser();
+export default function ReachYourBankBranch() {
+  // Demo user data - no auth needed
+  const user = { fullName: 'Demo User', email: 'demo@example.com' };
 
   const [selectedCity, setSelectedCity] = useState<'Chennai' | ''>('Chennai');
   const [selectedArea, setSelectedArea] = useState('');
@@ -87,7 +83,6 @@ export default function ReachYourBankBranch({ onLogout }: ReachYourBankBranchPro
             <ProfileDropdown
               userName={user?.fullName || 'User'}
               userEmail={user?.email || ''}
-              onLogout={onLogout}
             />
           </div>
         </div>

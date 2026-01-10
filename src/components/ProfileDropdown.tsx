@@ -1,19 +1,18 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ChevronDown, LogOut } from 'lucide-react';
-import { supabase } from '../lib/supabase';
 
 interface ProfileDropdownProps {
   userName: string;
   userEmail: string;
-  onLogout: () => void;
 }
 
-export default function ProfileDropdown({ userName, userEmail, onLogout }: ProfileDropdownProps) {
+export default function ProfileDropdown({ userName, userEmail }: ProfileDropdownProps) {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleLogout = async () => {
-    await supabase.auth.signOut();
-    onLogout();
+  const handleLogout = () => {
+    navigate('/login');
   };
 
   return (

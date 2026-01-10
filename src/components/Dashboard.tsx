@@ -5,11 +5,7 @@ import FindRightLoan from './FindRightLoan';
 import CardDisputeAssistant from './CardDisputeAssistant';
 import ReachYourBankBranch from './ReachYourBankBranch';
 
-interface DashboardProps {
-  onLogout: () => void;
-}
-
-export default function Dashboard({ onLogout }: DashboardProps) {
+export default function Dashboard() {
   const [activeMenu, setActiveMenu] = useState('transactions');
 
   if (activeMenu === 'transactions') {
@@ -17,7 +13,7 @@ export default function Dashboard({ onLogout }: DashboardProps) {
       <div className="flex min-h-screen bg-gray-50">
         <Sidebar activeMenu={activeMenu} onMenuChange={setActiveMenu} />
         <div className="w-[70%] ml-[30%] overflow-auto">
-          <TransactionDashboard onLogout={onLogout} />
+          <TransactionDashboard />
         </div>
       </div>
     );
@@ -30,15 +26,15 @@ export default function Dashboard({ onLogout }: DashboardProps) {
       <div className="w-[70%] ml-[30%] flex flex-col">
         <div className="flex-1 overflow-auto">
           {activeMenu === 'loan' && (
-            <FindRightLoan onLogout={onLogout} />
+            <FindRightLoan />
           )}
 
           {activeMenu === 'branch' && (
-            <ReachYourBankBranch onLogout={onLogout} />
+            <ReachYourBankBranch />
           )}
 
           {activeMenu === 'disputes' && (
-            <CardDisputeAssistant onLogout={onLogout} />
+            <CardDisputeAssistant />
           )}
 
           {activeMenu === 'settings' && (

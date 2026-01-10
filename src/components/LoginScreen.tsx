@@ -1,38 +1,18 @@
-import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Lock } from 'lucide-react';
-import { supabase } from '../lib/supabase';
 import EyeLogo from './EyeLogo';
 
-interface LoginScreenProps {
-  onCreateAccount: () => void;
-  onLoginSuccess: () => void;
-}
+export default function LoginScreen() {
+  const navigate = useNavigate();
 
-export default function LoginScreen({ onCreateAccount, onLoginSuccess }: LoginScreenProps) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
-    setLoading(true);
+    // Demo mode: directly navigate to dashboard without authentication
+    navigate('/dashboard');
+  };
 
-    try {
-      const { error: signInError } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
-
-      if (signInError) throw signInError;
-
-      onLoginSuccess();
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Login failed');
-    } finally {
-      setLoading(false);
-    }
+  const handleCreateAccount = () => {
+    navigate('/register');
   };
 
   return (
@@ -62,9 +42,6 @@ export default function LoginScreen({ onCreateAccount, onLoginSuccess }: LoginSc
                 <input
                   id="email"
                   type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#5A8FC7] focus:border-transparent transition-all bg-gray-50"
                   placeholder="Enter your email"
                 />
@@ -79,25 +56,17 @@ export default function LoginScreen({ onCreateAccount, onLoginSuccess }: LoginSc
                   <input
                     id="password"
                     type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
                     className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#5A8FC7] focus:border-transparent transition-all bg-gray-50"
                     placeholder="Enter your password"
                   />
                 </div>
               </div>
 
-              {error && (
-                <div className="text-red-600 text-sm text-center font-medium">{error}</div>
-              )}
-
               <button
                 type="submit"
-                disabled={loading}
-                className="w-full bg-[#5A8FC7] hover:bg-[#4A7BA7] text-white font-semibold py-3 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-md hover:shadow-lg"
+                className="w-full bg-[#5A8FC7] hover:bg-[#4A7BA7] text-white font-semibold py-3 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
               >
-                {loading ? 'Logging in...' : 'Login'}
+                Sign In
               </button>
             </form>
 
@@ -105,7 +74,7 @@ export default function LoginScreen({ onCreateAccount, onLoginSuccess }: LoginSc
               <p className="text-sm text-gray-700">
                 New user?{' '}
                 <button
-                  onClick={onCreateAccount}
+                  onClick={handleCreateAccount}
                   className="text-[#5A8FC7] hover:text-[#4A7BA7] font-semibold transition-colors"
                 >
                   Create an account

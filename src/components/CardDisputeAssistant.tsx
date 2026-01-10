@@ -1,6 +1,5 @@
 import { useMemo, useState } from 'react';
 import { CheckCircle2, ShieldAlert, CreditCard, AlertTriangle, FileText, Clock, User, BadgeCheck } from 'lucide-react';
-import { demoAuth } from '../lib/demoAuth';
 import ProfileDropdown from './ProfileDropdown';
 
 type DisputeType =
@@ -9,10 +8,6 @@ type DisputeType =
   | 'duplicate_charge'
   | 'failed_but_debited'
   | 'lost_or_stolen';
-
-interface CardDisputeAssistantProps {
-  onLogout: () => void;
-}
 
 interface FormState {
   transactionDate: string;
@@ -32,8 +27,9 @@ const disputeTypeLabels: Record<DisputeType, string> = {
 
 const bankOptions = ['SBI', 'HDFC', 'ICICI', 'Axis', 'Canara', 'Other'];
 
-export default function CardDisputeAssistant({ onLogout }: CardDisputeAssistantProps) {
-  const user = demoAuth.getCurrentUser();
+export default function CardDisputeAssistant() {
+  // Demo user data - no auth needed
+  const user = { fullName: 'Demo User', email: 'demo@example.com' };
   const [step, setStep] = useState<'type' | 'details' | 'guidance'>('type');
   const [selectedType, setSelectedType] = useState<DisputeType | null>(null);
   const [form, setForm] = useState<FormState>({
@@ -131,7 +127,6 @@ export default function CardDisputeAssistant({ onLogout }: CardDisputeAssistantP
             <ProfileDropdown
               userName={user?.fullName || 'User'}
               userEmail={user?.email || ''}
-              onLogout={onLogout}
             />
           </div>
         </div>

@@ -1,16 +1,13 @@
 import { useState, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Search, Filter, Upload, Clock, ChevronDown } from 'lucide-react';
 import { mockTransactions, categories, Transaction, TransactionCategory, TransactionType } from '../lib/mockTransactions';
 import BudgetChart from './BudgetChart';
-import { demoAuth } from '../lib/demoAuth';
-
-interface TransactionDashboardProps {
-  onLogout: () => void;
-}
 
 type TimeFilter = 'all' | 'day' | 'week' | 'month';
 
-export default function TransactionDashboard({ onLogout }: TransactionDashboardProps) {
+export default function TransactionDashboard() {
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<TransactionCategory | 'All'>('All');
   const [selectedType, setSelectedType] = useState<TransactionType | 'All'>('All');
@@ -19,7 +16,8 @@ export default function TransactionDashboard({ onLogout }: TransactionDashboardP
   const [showTypeDropdown, setShowTypeDropdown] = useState(false);
   const [showTimeDropdown, setShowTimeDropdown] = useState(false);
 
-  const user = demoAuth.getCurrentUser();
+  // Demo user data - no auth needed
+  const user = { fullName: 'Demo User', bankName: 'Demo Bank' };
 
   const filteredTransactions = useMemo(() => {
     let filtered = mockTransactions;
@@ -76,7 +74,7 @@ export default function TransactionDashboard({ onLogout }: TransactionDashboardP
             <p className="text-gray-600 mt-1">{user?.bankName}</p>
           </div>
           <button
-            onClick={onLogout}
+            onClick={() => navigate('/login')}
             className="px-4 py-2 bg-red-50 text-red-600 rounded-lg hover:bg-red-100 transition font-medium"
           >
             Logout

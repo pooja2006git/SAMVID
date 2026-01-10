@@ -1,11 +1,6 @@
 import { useState } from 'react';
 import { User, CheckCircle2, GraduationCap, Home, Car, Briefcase, DollarSign, Info } from 'lucide-react';
-import { demoAuth } from '../lib/demoAuth';
 import ProfileDropdown from './ProfileDropdown';
-
-interface FindRightLoanProps {
-  onLogout: () => void;
-}
 
 interface LoanRecommendation {
   loanType: string;
@@ -15,7 +10,7 @@ interface LoanRecommendation {
   explanation: string;
 }
 
-export default function FindRightLoan({ onLogout }: FindRightLoanProps) {
+export default function FindRightLoan() {
   const [employmentType, setEmploymentType] = useState('');
   const [monthlyIncome, setMonthlyIncome] = useState('');
   const [cibilScore, setCibilScore] = useState('');
@@ -23,7 +18,8 @@ export default function FindRightLoan({ onLogout }: FindRightLoanProps) {
   const [showRecommendations, setShowRecommendations] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
-  const user = demoAuth.getCurrentUser();
+  // Demo user data - no auth needed
+  const user = { fullName: 'Demo User', email: 'demo@example.com' };
 
   const recommendations: LoanRecommendation[] = [
     {
@@ -104,10 +100,9 @@ export default function FindRightLoan({ onLogout }: FindRightLoanProps) {
             <p className="text-gray-600 text-lg">Check loan eligibility and suitable options based on your profile</p>
           </div>
           <div className="flex items-center gap-4">
-            <ProfileDropdown 
-              userName={user?.fullName || 'User'} 
-              userEmail={user?.email || ''} 
-              onLogout={onLogout} 
+            <ProfileDropdown
+              userName={user?.fullName || 'User'}
+              userEmail={user?.email || ''}
             />
           </div>
         </div>
