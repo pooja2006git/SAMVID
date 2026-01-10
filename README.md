@@ -60,7 +60,52 @@ Instead of offering heavy banking operations, the app focuses on **clarity, guid
 ## 📦 Project Status
 
 - Product currently at **MVP stage**
-- 
+
+---
+
+## 🚀 Deployment
+
+### Deploying to Vercel
+
+1. **Push your code to GitHub** (or GitLab/Bitbucket)
+
+2. **Connect to Vercel:**
+   - Go to [vercel.com](https://vercel.com)
+   - Import your repository
+   - Vercel will auto-detect the Vite framework
+
+3. **Set Environment Variables:**
+   In your Vercel project settings, add these environment variables:
+   ```
+   VITE_SUPABASE_URL=your_supabase_project_url
+   VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+   ```
+   Get these values from your Supabase project settings: https://supabase.com/dashboard/project/_/settings/api
+
+4. **Deploy:**
+   - Vercel will automatically build and deploy
+   - Build command: `npm run build`
+   - Output directory: `dist`
+   - Framework preset: Vite
+
+### Local Development
+
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+2. Create a `.env` file in the project root:
+   ```env
+   VITE_SUPABASE_URL=your_supabase_project_url
+   VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+   ```
+
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
 ---
 
 ## 🔒 Privacy & Security Approach
