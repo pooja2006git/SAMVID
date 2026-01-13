@@ -1,13 +1,12 @@
 import { useState, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Search, Filter, Upload, Clock, ChevronDown } from 'lucide-react';
-import { mockTransactions, categories, Transaction, TransactionCategory, TransactionType } from '../lib/mockTransactions';
+import { mockTransactions, categories, TransactionCategory, TransactionType } from '../lib/mockTransactions';
 import BudgetChart from './BudgetChart';
+import UserProfileHeader from './UserProfileHeader';
 
 type TimeFilter = 'all' | 'day' | 'week' | 'month';
 
 export default function TransactionDashboard() {
-  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<TransactionCategory | 'All'>('All');
   const [selectedType, setSelectedType] = useState<TransactionType | 'All'>('All');
@@ -15,9 +14,6 @@ export default function TransactionDashboard() {
   const [showCategoryDropdown, setShowCategoryDropdown] = useState(false);
   const [showTypeDropdown, setShowTypeDropdown] = useState(false);
   const [showTimeDropdown, setShowTimeDropdown] = useState(false);
-
-  // Demo user data - no auth needed
-  const user = { fullName: 'Demo User', bankName: 'Demo Bank' };
 
   const filteredTransactions = useMemo(() => {
     let filtered = mockTransactions;
@@ -66,19 +62,11 @@ export default function TransactionDashboard() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-8">
+      <UserProfileHeader />
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="flex justify-between items-center mb-8">
-          <div>
-            <h1 className="text-4xl font-bold text-gray-900">Hello, {user?.fullName}</h1>
-            <p className="text-gray-600 mt-1">{user?.bankName}</p>
-          </div>
-          <button
-            onClick={() => navigate('/login')}
-            className="px-4 py-2 bg-red-50 text-red-600 rounded-lg hover:bg-red-100 transition font-medium"
-          >
-            Logout
-          </button>
+        <div className="mb-8">
+          <h1 className="text-4xl font-bold text-gray-900">Hello, Pooja</h1>
         </div>
 
         {/* Controls Section */}

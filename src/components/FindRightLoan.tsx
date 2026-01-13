@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { User, CheckCircle2, GraduationCap, Home, Car, Briefcase, DollarSign, Info } from 'lucide-react';
-import ProfileDropdown from './ProfileDropdown';
+import UserProfileHeader from './UserProfileHeader';
 
 interface LoanRecommendation {
   loanType: string;
@@ -17,9 +17,6 @@ export default function FindRightLoan() {
   const [loanPurpose, setLoanPurpose] = useState('');
   const [showRecommendations, setShowRecommendations] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-
-  // Demo user data - no auth needed
-  const user = { fullName: 'Demo User', email: 'demo@example.com' };
 
   const recommendations: LoanRecommendation[] = [
     {
@@ -92,18 +89,13 @@ export default function FindRightLoan() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+      <UserProfileHeader />
       {/* Top Section */}
       <div className="bg-white border-b border-gray-200 px-8 py-6">
-        <div className="max-w-6xl mx-auto flex justify-between items-start">
+        <div className="max-w-6xl mx-auto">
           <div>
             <h1 className="text-4xl font-bold text-gray-900 mb-2">Find the Right Loan</h1>
             <p className="text-gray-600 text-lg">Check loan eligibility and suitable options based on your profile</p>
-          </div>
-          <div className="flex items-center gap-4">
-            <ProfileDropdown
-              userName={user?.fullName || 'User'}
-              userEmail={user?.email || ''}
-            />
           </div>
         </div>
       </div>

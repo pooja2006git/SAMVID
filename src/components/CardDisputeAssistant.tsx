@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { CheckCircle2, ShieldAlert, CreditCard, AlertTriangle, FileText, Clock, User, BadgeCheck } from 'lucide-react';
-import ProfileDropdown from './ProfileDropdown';
+import UserProfileHeader from './UserProfileHeader';
 
 type DisputeType =
   | 'unauthorized'
@@ -28,8 +28,6 @@ const disputeTypeLabels: Record<DisputeType, string> = {
 const bankOptions = ['SBI', 'HDFC', 'ICICI', 'Axis', 'Canara', 'Other'];
 
 export default function CardDisputeAssistant() {
-  // Demo user data - no auth needed
-  const user = { fullName: 'Demo User', email: 'demo@example.com' };
   const [step, setStep] = useState<'type' | 'details' | 'guidance'>('type');
   const [selectedType, setSelectedType] = useState<DisputeType | null>(null);
   const [form, setForm] = useState<FormState>({
@@ -116,18 +114,13 @@ export default function CardDisputeAssistant() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+      <UserProfileHeader />
       {/* Top Section */}
       <div className="bg-white border-b border-gray-200 px-8 py-6">
-        <div className="max-w-6xl mx-auto flex justify-between items-start">
+        <div className="max-w-6xl mx-auto">
           <div>
             <h1 className="text-4xl font-bold text-gray-900 mb-2">Card Dispute Assistant</h1>
             <p className="text-gray-600 text-lg">Guided help for credit and debit card issues</p>
-          </div>
-          <div className="flex items-center gap-4">
-            <ProfileDropdown
-              userName={user?.fullName || 'User'}
-              userEmail={user?.email || ''}
-            />
           </div>
         </div>
       </div>

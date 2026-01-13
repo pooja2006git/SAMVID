@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { MapPin, Clock, Phone, Navigation, Building } from 'lucide-react';
-import ProfileDropdown from './ProfileDropdown';
+import UserProfileHeader from './UserProfileHeader';
 
 interface BranchInfo {
   id: string;
@@ -55,9 +55,6 @@ const chennaiBranches: BranchInfo[] = [
 ];
 
 export default function ReachYourBankBranch() {
-  // Demo user data - no auth needed
-  const user = { fullName: 'Demo User', email: 'demo@example.com' };
-
   const [selectedCity, setSelectedCity] = useState<'Chennai' | ''>('Chennai');
   const [selectedArea, setSelectedArea] = useState('');
 
@@ -70,20 +67,15 @@ export default function ReachYourBankBranch() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+      <UserProfileHeader />
       {/* Top Section */}
       <div className="bg-white border-b border-gray-200 px-8 py-6">
-        <div className="max-w-6xl mx-auto flex justify-between items-start">
+        <div className="max-w-6xl mx-auto">
           <div>
             <h1 className="text-4xl font-bold text-gray-900 mb-2">Reach Your Bank Branch</h1>
             <p className="text-gray-600 text-lg">
               Find nearby bank branches and visit details easily
             </p>
-          </div>
-          <div className="flex items-center gap-4">
-            <ProfileDropdown
-              userName={user?.fullName || 'User'}
-              userEmail={user?.email || ''}
-            />
           </div>
         </div>
       </div>
