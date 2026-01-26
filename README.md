@@ -2,16 +2,16 @@
 # 🏦 SAMVID – A Simple, Secure Digital Passbook
 ### A Transaction viewer for Everyday Banking
 
-<img src="flameout dashboard.jpeg"/>
-
-##🧠**What is SAMVID?**
+<img src="samvid.jpeg"/>
+ 
+## 🧠 What is SAMVID?
 
 SAMVID is a digital passbook replacement designed to give users a clear, trusted, and simple view of their bank transactions — without the complexity of modern banking apps.
 
 Instead of relying on physical passbooks or cluttered apps, SAMVID presents only what matters:
 👉 Your transactions, clearly structured and always accessible.
 
-##**Why SAMVID Exists**
+## Why SAMVID Exists
 
 Despite digital banking, millions of users still face problems:
 
@@ -24,24 +24,7 @@ Despite digital banking, millions of users still face problems:
 >**Core problem:**
 There is no simple, trustworthy digital alternative to a traditional bank passbook.
 
-## 🎯 Problem Statement
-
-Despite rapid digitalization, a large number of users still rely on manual passbook updates by visiting bank branches.
-
-### Key Challenges:
-
-- 📘 Manual passbook updates cause crowding, delays, and inconvenience
-- 📱 Existing banking apps are cluttered, complex, and hard to navigate
-- 🔐 Frequent OTP failures, app bugs, poor responsiveness
-- 💬 SMS alerts are unreliable, mixed with spam, and unstructured
-- 🧓 Senior citizens & everyday users struggle with modern banking apps
-- 🚨 Passbooks are not accessible during emergencies or outside banking hours
-
-### Core Problem:
-
-There is no simple, trusted, and user-friendly digital alternative to the traditional bank passbook for verifying transactions.
-
-## 💡 Solution
+## 💡 What SAMVID Does
 
 SAMVID acts as a digital passbook, focused on clarity, trust, and ease of access.
 
@@ -61,14 +44,14 @@ SAMVID acts as a digital passbook, focused on clarity, trust, and ease of access
 - **Passbook-first design** — focuses only on transaction verification, not analytics clutter
 - **Accessible & reliable** — works smoothly on low-end devices, older OS, and poor networks
 - **Secure without friction** — biometric-first authentication, no developer-mode lockouts
+  >SAMVID is not a full banking app — and that is its biggest strength.
+
 
 ## 🏗️ Technical Architecture
 
 ### High-Level Flow:
 
-```
-User → Authentication → Consent → Account Aggregator → Bank → Transaction Data → SAMVID UI
-```
+<img src="final architecture.png"/>
 
 ## 🔐 Authentication & Security
 
