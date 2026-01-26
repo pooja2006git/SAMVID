@@ -1,14 +1,28 @@
-# SAMVID
 
-**A Simple, Secure Digital Passbook for Everyday Banking**
+# 🏦 SAMVID – A Simple, Secure Digital Passbook
+### A Transaction viewer for Everyday Banking
 
-## 🚀 Overview
+<img src="flameout dashboard.jpeg"/>
 
-SAMVID is a lightweight, secure banking transaction awareness platform designed to replace the traditional bank passbook with a simple, trusted digital alternative.
+##🧠**What is SAMVID?**
 
-Instead of forcing users to navigate complex banking apps or depend on unreliable SMS alerts, SAMVID provides a clear, structured, and always-accessible transaction view, optimized for usability, reliability, and accessibility.
+SAMVID is a digital passbook replacement designed to give users a clear, trusted, and simple view of their bank transactions — without the complexity of modern banking apps.
 
-This repository contains the Minimum Viable Product (MVP) of SAMVID, developed and submitted for the HackwithMagnus 2026 – Prototype & Finale Selection Rounds.
+Instead of relying on physical passbooks or cluttered apps, SAMVID presents only what matters:
+👉 Your transactions, clearly structured and always accessible.
+
+##**Why SAMVID Exists**
+
+Despite digital banking, millions of users still face problems:
+
+-Physical passbooks require bank visits
+-Banking apps are complex and unreliable
+-OTP failures, app crashes, and device restrictions
+-SMS alerts are unstructured and easy to miss
+-Senior citizens struggle with current interfaces
+
+>**Core problem:**
+There is no simple, trustworthy digital alternative to a traditional bank passbook.
 
 ## 🎯 Problem Statement
 
