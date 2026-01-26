@@ -51,7 +51,7 @@ SAMVID acts as a digital passbook, focused on clarity, trust, and ease of access
 
 ### High-Level Flow:
 
-<img src="final architecture.png"/>
+<img src="final architeture.png"/>
 
 ## 🔐 Authentication & Security
 
