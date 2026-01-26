@@ -170,5 +170,5 @@ SAMVID is not just another banking app.
 It is a focused, secure, and accessible digital passbook, built to solve a real, everyday banking problem with simplicity and trust at its core.
 
 ## 👥 Team
-S Poojasri
-Shrinand S Menon 
+>S Poojasri
+>Shrinand S Menon 
