@@ -44,6 +44,7 @@ SAMVID acts as a digital passbook, focused on clarity, trust, and ease of access
 - **Passbook-first design** — focuses only on transaction verification, not analytics clutter
 - **Accessible & reliable** — works smoothly on low-end devices, older OS, and poor networks
 - **Secure without friction** — biometric-first authentication, no developer-mode lockouts
+- 
   >SAMVID is not a full banking app — and that is its biggest strength.
 
 
@@ -121,12 +122,6 @@ User
 ⚠️ **Note:** This MVP uses mock/sample data for demonstration.
 
 Live AA integration is planned post-approval & partnerships.
-
-## 📱 Prototype Screens
-
-- Authentication Flow
-- Biometric Authentication
-- Transaction Dashboard
 
 ## 📈 Impact
 
