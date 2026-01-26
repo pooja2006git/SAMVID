@@ -9,7 +9,7 @@
 SAMVID is a digital passbook replacement designed to give users a clear, trusted, and simple view of their bank transactions — without the complexity of modern banking apps.
 
 Instead of relying on physical passbooks or cluttered apps, SAMVID presents only what matters:
-👉 Your transactions, clearly structured and always accessible.
+>👉 Your transactions, clearly structured and always accessible.
 
 ## Why SAMVID Exists
 
