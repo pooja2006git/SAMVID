@@ -5,6 +5,8 @@
 <img src="samvid.jpeg"/>
 
 🔗 **Live Demo:** https://samvid.vercel.app/
+
+**Presentation video :** https://drive.google.com/file/d/1fIv61kdrm5AfgLSNH7SqLwzhu_U5q3Xg/view?usp=sharing
  
 ## 🧠 What is SAMVID?
 
