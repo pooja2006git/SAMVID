@@ -18,6 +18,12 @@ export default function TransactionDashboard({ onLogout }: TransactionDashboardP
   const [showTypeDropdown, setShowTypeDropdown] = useState(false);
   const [showTimeDropdown, setShowTimeDropdown] = useState(false);
 
+  const totalBalance = useMemo(() => {
+    return mockTransactions
+      .filter(t => t.status === 'Completed')
+      .reduce((sum, t) => sum + (t.isIncoming ? t.amount : -t.amount), 0);
+  }, []);
+
   const filteredTransactions = useMemo(() => {
     let filtered = mockTransactions;
 
@@ -57,8 +63,17 @@ export default function TransactionDashboard({ onLogout }: TransactionDashboardP
       <UserProfileHeader onLogout={onLogout} />
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="mb-8">
+        <div className="mb-8 flex items-center justify-between gap-6">
           <h1 className="text-4xl font-bold text-gray-900">Hello, Pooja</h1>
+          <div className="flex-1 flex justify-center">
+            <div className="bg-white rounded-xl shadow-md border border-gray-200 px-6 py-4 min-w-[200px]">
+              <p className="text-xs font-medium text-gray-500 uppercase tracking-wide mb-1">Total Balance</p>
+              <p className={`text-2xl font-bold ${totalBalance >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                {totalBalance < 0 ? '-' : ''}₹{Math.abs(totalBalance).toLocaleString()}
+              </p>
+            </div>
+          </div>
+          <div className="w-[280px]" />
         </div>
 
         {/* Controls Section */}
