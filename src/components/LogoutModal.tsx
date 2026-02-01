@@ -8,7 +8,7 @@ interface LogoutModalProps {
 export default function LogoutModal({ onClose, onLogout }: LogoutModalProps) {
   const handleGiveFeedback = () => {
     window.open(
-      'https://docs.google.com/forms/d/e/1FAIpQLSdXfwx1SK0Q21zw8d9UC-_NYtruNORXGT-RVWlwt-cQPT2NVg/viewform?usp=publish-editor',
+      'https://docs.google.com/forms/d/e/1FAIpQLSc3RYNfijalmdhvbdyiZaHThSaNUxwLuEZyOykZOUAib9IbLQ/viewform?usp=publish-editor',
       '_blank'
     );
   };
